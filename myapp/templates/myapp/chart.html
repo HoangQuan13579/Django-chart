@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'myapp/css/chart.css' %}">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <!--<h2>DOANH SỐ BÁN HÀNG THEO MẶT HÀNG</h2>-->
+    <div class="chart-container">
+    <canvas id="chart1"></canvas>
+    </div>
+    <!--<h2>DOANH SỐ BÁN HÀNG THEO NHÓM HÀNG</h2>-->
+    <div class="chart-container">
+    <canvas id="chart2"></canvas>
+    </div>
+    <script id="chart12-data" type="application/json">
+        {{ data|safe }}
+    </script>
+
+    <!--<h2>DOANH SỐ BÁN HÀNG THEO THÁNG</h2>-->
+    <div class="chart-container">
+    <canvas id="chart3"></canvas>
+    </div>
+    <script id="chart3-data" type="application/json">
+        {{ chart3_data|safe }}
+    </script>
+    <!--<h2>DOANH SỐ TRUNG BÌNH THEO NGÀY TRONG TUẦN</h2>-->
+    <div class="chart-container">
+    <canvas id="chart4"></canvas>
+    </div>
+    <script id="chart4-data" type="application/json">
+        {{ chart4_data|safe }}
+    </script>
+        <!--<h2>DOANH SỐ TRUNG BÌNH THEO NGÀY TRONG THÁNG</h2>-->
+    <div class="chart-container">
+    <canvas id="chart5"></canvas>
+    </div>
+    <script id="chart5-data" type="application/json">
+        {{ chart5_data|safe }}
+    </script>
+        <!--<h2>DOANH SỐ TRUNG BÌNH THEO KHUNG GIỜ</h2>-->
+    <div class="chart-container">
+    <canvas id="chart6"></canvas>
+    </div>
+    <script id="chart6-data" type="application/json">
+        {{ chart6_data|safe }}
+    </script>
+        <!--<h2>XSBH THEO NHÓM HÀNG</h2>-->
+    <div class="chart-container">
+    <canvas id="chart7"></canvas>
+    </div>
+    <script id="chart7-data" type="application/json">
+        {{ chart7_data|safe }}
+    </script>
+        <!--<h2>XSBH THEO NHÓM HÀNG THEO THÁNG</h2>-->
+    <div class="chart-container">
+    <canvas id="chart8"></canvas>
+    </div>
+    <script id="chart8-data" type="application/json">
+        {{ chart8_data|safe }}
+    </script>
+            <!--<h2>XSBH MẶT HÀNG THEO NHÓM HÀNG</h2>-->
+    <div id="chart9" class="chart-container"></div>
+    </div>
+    <script id="chart9-data" type="application/json">
+        {{ chart9_data|safe }}
+    </script>
+            <!--<h2>XSBH MẶT HÀNG THEO NHÓM HÀNG THEO THÁNG</h2>-->
+    <div id="chart10" class="chart-container"></div>
+    </div>
+    <script id="chart10-data" type="application/json">
+        {{ chart10_data|safe }}
+    </script>
+            <!--<h2>PHÂN PHỐI LƯỢT MUA HÀNG</h2>-->
+    <div class="chart-container">
+    <canvas id="chart11"></canvas>
+    </div>
+    <script id="chart11-data" type="application/json">
+        {{ chart11_data|safe }}
+    </script>
+            <!--<h2>PHÂN PHỐI MỨC CHI TRẢ</h2>-->
+    <div class="chart-container">
+    <canvas id="chart122"></canvas>
+</div>
+<script id="chart122-data" type="application/json">
+    {{ chart122_data|safe }}
+</script>
+
+    <script src="{% static 'myapp/js/chart.js' %}"></script>
+</body>
+</html>
+
+

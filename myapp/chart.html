@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <h2>Doanh số bán hàng theo mặt hàng</h2>
+    <div id="chart1"></div>
+
+    <script>
+        const data = {{ data|safe }};
+        console.log(data);
+        // code D3.js để vẽ chart sẽ đặt ở đây
+        <script>
+    const data = {{ data|safe }};
+
+    // Giả sử data = [{product__group__name: "Áo", total: 120000}, ...]
+
+    // 1️⃣ Kích thước chart
+    const width = 600;
+    const height = 400;
+    const margin = {top: 20, right: 30, bottom: 40, left: 50};
+
+    // 2️⃣ Tạo SVG
+    const svg = d3.select("#chart1")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    // 3️⃣ Scale
+    const x = d3.scaleBand()
+        .domain(data.map(d => d.product__group__name))
+        .range([margin.left, width - margin.right])
+        .padding(0.2);
+
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d.total)]).nice()
+        .range([height - margin.bottom, margin.top]);
+
+    // 4️⃣ Trục X và Y
+    svg.append("g")
+        .attr("transform", `translate(0,${height - margin.bottom})`)
+        .call(d3.axisBottom(x));
+
+    svg.append("g")
+        .attr("transform", `translate(${margin.left},0)`)
+        .call(d3.axisLeft(y));
+
+    // 5️⃣ Cột dữ liệu
+    svg.append("g")
+        .selectAll("rect")
+        .data(data)
+        .join("rect")
+        .attr("x", d => x(d.product__group__name))
+        .attr("y", d => y(d.total))
+        .attr("height", d => y(0) - y(d.total))
+        .attr("width", x.bandwidth())
+        .attr("fill", "steelblue");
+</script>
+    </script>
+</body>
+</html>
